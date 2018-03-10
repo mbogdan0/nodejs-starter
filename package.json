@@ -9,9 +9,13 @@
     "start": "nodemon --watch dist ./dist/server.js"
   },
   "dependencies": {
+    "@types/node": "^9.4.7",
+    "@types/request": "^2.47.0",
     "@types/rx": "^4.1.1",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.2",
     "mongoose": "^5.0.9",
+    "request": "^2.83.0",
     "rxjs": "^5.5.6"
   },
   "devDependencies": {
