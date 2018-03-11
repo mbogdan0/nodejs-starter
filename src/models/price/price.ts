@@ -1,11 +1,12 @@
 import {Schema} from 'mongoose';
 import * as mongoose from 'mongoose';
+import * as moment from 'moment';
 
 export interface IPrice {
     price: number;
     priceText?: string;
     application: any;
-    date: Date;
+    date: any;
 }
 
 
@@ -18,8 +19,17 @@ const PriceSchema = new Schema({
     priceText: {
         type: String
     },
+    prevPrice: {
+        type: Number,
+        index: true
+    },
+    prevPriceText: {
+      type: String
+    },
     application: {
         required: true,
+        index: true,
+        unique: true,
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Application'
     },
@@ -29,5 +39,7 @@ const PriceSchema = new Schema({
         index: true
     }
 });
+
+
 
 export const Price = mongoose.model('Price', PriceSchema);

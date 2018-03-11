@@ -17,26 +17,35 @@ interface Attributes {
     name: string;
     description: string;
     hasInAppPurchases: boolean;
-    releaseDate: string;
+    releaseDate: any;
     url: string;
     size: number;
     subtitle: string;
-    versionHistory: VersionHistory[];
+    versionHistory: any;
 }
 interface Data {
     id: string;
     attributes: Attributes;
 }
-interface IncludeAttributes {
+interface IncludeAttributes1 {
     price: number;
     priceFormatted: String;
 }
+
+interface IncludeAttributes3 {
+    attributes: {
+        url: string
+    };
+}
+
 interface Included {
-    attributes: IncludeAttributes[];
+    attributes: any;
 }
 
 export interface SiteJSON {
     data: Data;
     included: Included;
+    category: any;
+    picture: any;
 }
 

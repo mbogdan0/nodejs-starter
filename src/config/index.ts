@@ -1,10 +1,12 @@
 interface Config {
     mongoUri: string;
     options: any;
+    uploadDir: string;
 }
 
 const config: Config = {
     mongoUri: 'mongodb://localhost/test-apple',
+    uploadDir: 'pictures/',
     options: {
         db: {
             safe: true

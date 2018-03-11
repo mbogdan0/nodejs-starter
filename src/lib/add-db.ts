@@ -43,8 +43,10 @@ export class AddDb {
     }
     addJSON(json: any) {
         addAppDb(json).then(done => {
-            console.log(done);
-            this.fLink();
+            console.log('another');
+            setTimeout(() => {
+                this.fLink();
+            }, 100);
         }).catch(e => {
             console.log(e);
             this.fLink();

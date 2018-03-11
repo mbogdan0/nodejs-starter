@@ -2,15 +2,15 @@ import {Schema} from 'mongoose';
 import * as mongoose from 'mongoose';
 
 export interface IApplication {
-    appid: number;
+    appid: string;
     title: string;
     subtitle?: string;
     description?: string;
-    picture?: string;
+    picture?: any;
     active: boolean;
     hasInAppPurchases?: boolean;
-    releaseDate?: Date;
-    lastUpdateSoft?: Date;
+    releaseDate?: any;
+    lastUpdateSoft?: any;
     category: any;
     size?: number;
     deviceIphone?: boolean;
@@ -18,6 +18,10 @@ export interface IApplication {
     deviceIpod?: boolean;
     copyright?: string;
     urlItunes: string;
+    rating?: any;
+    ratingCount?: any;
+    timeAdd: any;
+    localPicture?: string;
 }
 
 
@@ -35,7 +39,8 @@ const ApplicationSchema = new Schema({
         required: true
     },
     subtitle: {
-        type: String
+        type: String,
+        trim: true
     },
     description: {
         type: String,
@@ -43,6 +48,9 @@ const ApplicationSchema = new Schema({
         index: false
     },
     picture: {
+        type: String,
+    },
+    localPicture: {
         type: String,
     },
     active: {
@@ -64,9 +72,9 @@ const ApplicationSchema = new Schema({
         index: true
     },
     category: {
-        required: false,
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category'
+        type: String,
+        index: true,
+        trim: true
     },
     size: {
         type: Number,
@@ -90,7 +98,19 @@ const ApplicationSchema = new Schema({
     urlItunes: {
         type: String,
         require: true
+    },
+    rating: {
+        type: Number,
+        index: true
+    },
+    ratingCount: {
+        type: Number,
+        index: true
+    },
+    timeAdd: {
+        type: Date,
+        index: true
     }
-}, { autoIndex: false });
+});
 
 export const Application = mongoose.model('Application', ApplicationSchema);
